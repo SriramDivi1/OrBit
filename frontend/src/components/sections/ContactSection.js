@@ -52,7 +52,18 @@ const ContactSection = () => {
       data-testid="contact-section"
       className={`py-24 md:py-32 ${isDark ? 'bg-dark-surface' : 'bg-light-surface'}`}
     >
-      <Toaster position="top-right" theme={isDark ? 'dark' : 'light'} />
+      <Toaster 
+        position="top-center" 
+        theme={isDark ? 'dark' : 'light'} 
+        richColors
+        toastOptions={{
+          duration: 4000,
+          style: {
+            fontSize: '16px',
+            padding: '16px 24px',
+          }
+        }}
+      />
       
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
         {/* Section Header */}
