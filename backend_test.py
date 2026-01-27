@@ -123,7 +123,15 @@ class PortfolioAPITester:
     def test_cors_headers(self):
         """Test CORS headers are present"""
         try:
-            response = requests.options(f"{self.base_url}/api/health", timeout=10)
+            response = requests.options(
+                f"{self.base_url}/api/contact",
+                headers={
+                    'Origin': 'http://localhost:3000',
+                    'Access-Control-Request-Method': 'POST',
+                    'Access-Control-Request-Headers': 'Content-Type'
+                },
+                timeout=10
+            )
             
             cors_headers = [
                 'access-control-allow-origin',
