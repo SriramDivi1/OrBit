@@ -1,13 +1,28 @@
 {
-  "timestamp": "2026-01-27T13:57:51.553169",
-  "total_tests": 1,
-  "passed_tests": 0,
-  "success_rate": "0.0%",
+  "timestamp": "2026-01-27T14:00:26.267568",
+  "total_tests": 4,
+  "passed_tests": 2,
+  "success_rate": "50.0%",
   "test_details": [
     {
       "test": "Health Check",
+      "success": true,
+      "details": "Status: {'status': 'healthy', 'message': 'Portfolio API is running'}"
+    },
+    {
+      "test": "Contact Form Submission",
       "success": false,
-      "details": "Status code: 404"
+      "details": "Exception: HTTPConnectionPool(host='localhost', port=8001): Read timed out. (read timeout=10)"
+    },
+    {
+      "test": "Contact Validation",
+      "success": true,
+      "details": "Properly rejected invalid data"
+    },
+    {
+      "test": "CORS Headers",
+      "success": false,
+      "details": "Missing CORS headers. Found: []"
     }
   ]
 }
