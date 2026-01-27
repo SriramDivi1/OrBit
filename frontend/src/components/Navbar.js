@@ -103,8 +103,9 @@ const Navbar = () => {
 
               <button
                 data-testid="mobile-menu-toggle"
-                className="md:hidden"
+                className="md:hidden p-2 rounded-lg hover:bg-dark-surface/50"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? (
                   <X size={24} className={isDark ? 'text-dark-text' : 'text-light-text'} />
