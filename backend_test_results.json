@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-01-27T13:57:51.553169",
+  "total_tests": 1,
+  "passed_tests": 0,
+  "success_rate": "0.0%",
+  "test_details": [
+    {
+      "test": "Health Check",
+      "success": false,
+      "details": "Status code: 404"
+    }
+  ]
+}
