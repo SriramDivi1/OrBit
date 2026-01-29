@@ -6,78 +6,114 @@ import { useTheme } from '../../context/ThemeContext';
 const projects = [
   {
     id: 1,
+    title: 'BMW Landing Page',
+    description: 'Premium BMW M Series landing page with interactive 3D models, dark/light mode, smooth animations & responsive design. Built with cutting-edge web technologies.',
+    tech: ['React', 'TypeScript', 'Three.js', 'Framer Motion', 'TailwindCSS'],
+    github: 'https://github.com/SriramDivi1/BMW-Landing-Page',
+    live: 'https://bmwgallery.vercel.app/',
+    category: 'Frontend',
+    featured: true,
+    highlights: [
+      'Interactive 3D car models',
+      'Smooth scroll animations',
+      'Dark/Light theme toggle',
+      'Fully responsive design'
+    ]
+  },
+  {
+    id: 2,
+    title: 'Expense Tracker Portfolio',
+    description: 'A premium expense tracking application with advanced analytics, budget management, and glassmorphism UI. Features dark mode, interactive charts, and comprehensive financial reports.',
+    tech: ['React', 'JavaScript', 'Vite', 'Vanilla CSS', 'Recharts'],
+    github: 'https://github.com/SriramDivi1/expense-tracker-portfolio',
+    live: 'https://expense-tracker-portfolio-omega.vercel.app',
+    category: 'Frontend',
+    featured: true,
+    highlights: [
+      'Budget management system',
+      'Interactive analytics charts',
+      'Glassmorphism UI design',
+      'Advanced filtering & search'
+    ]
+  },
+  {
+    id: 3,
     title: 'Mini CRM Backend',
-    description: 'Production-ready Mini CRM Backend API with JWT authentication, role-based authorization (RBAC), and comprehensive Swagger documentation.',
+    description: 'Production-quality REST API with NestJS, PostgreSQL, and Prisma. Features JWT authentication, role-based authorization (RBAC), and comprehensive Swagger documentation.',
     tech: ['NestJS', 'TypeScript', 'PostgreSQL', 'Prisma', 'Docker', 'JWT'],
     github: 'https://github.com/SriramDivi1/Mini-CRM-Backend-Developer-Task',
     category: 'Backend',
     featured: true,
     highlights: [
       '15+ REST API endpoints',
-      'JWT Auth & RBAC (Admin/Employee)',
+      'JWT Auth & RBAC system',
       'Dockerized deployment',
-      'Swagger documentation'
-    ]
-  },
-  {
-    id: 2,
-    title: 'Responsive React Frontends',
-    description: 'Collection of responsive frontend applications built with React and modern UI libraries, focusing on user experience and performance.',
-    tech: ['React', 'JavaScript', 'CSS', 'Responsive Design'],
-    category: 'Frontend',
-    featured: true,
-    highlights: [
-      'Dynamic user interfaces',
-      'Modern UI/UX patterns',
-      'Mobile-first approach',
-      'Performance optimized'
-    ]
-  },
-  {
-    id: 3,
-    title: 'Type-Safe Database Layer',
-    description: 'Implementation of type-safe database queries using Prisma ORM, ensuring data integrity and developer productivity.',
-    tech: ['Prisma', 'TypeScript', 'PostgreSQL', 'Node.js'],
-    category: 'Backend',
-    featured: false,
-    highlights: [
-      'Type-safe queries',
-      'Database migrations',
-      'Schema management',
-      'Query optimization'
+      'Swagger API documentation'
     ]
   },
   {
     id: 4,
-    title: 'Docker Containerization',
-    description: 'Containerized applications using Docker for consistent development and production deployments.',
-    tech: ['Docker', 'Docker Compose', 'CI/CD', 'DevOps'],
-    category: 'DevOps',
+    title: 'SyncPlay',
+    description: 'One-stop streaming solution for movies, series, and live streams. Watch together with friends in real-time with synchronized playback and chat features.',
+    tech: ['TypeScript', 'React', 'WebSockets', 'Node.js'],
+    github: 'https://github.com/SriramDivi1/SyncPlay',
+    category: 'Full Stack',
     featured: false,
     highlights: [
-      'Multi-stage builds',
-      'Container orchestration',
-      'Environment parity',
-      'Deployment automation'
+      'Real-time synchronized playback',
+      'Live chat integration',
+      'Movie & series streaming',
+      'WebSocket communication'
     ]
   },
   {
     id: 5,
-    title: 'Interactive API Documentation',
-    description: 'Created interactive API documentation with Swagger/OpenAPI for better developer experience and API consumption.',
-    tech: ['Swagger', 'OpenAPI', 'REST API', 'Documentation'],
-    category: 'Backend',
+    title: 'Real-time Chat App',
+    description: 'Real-time messaging application with Socket.IO for instant communication. Features user authentication, message persistence, and responsive design.',
+    tech: ['JavaScript', 'Socket.IO', 'Node.js', 'Express'],
+    github: 'https://github.com/SriramDivi1/real-time-chat-app',
+    category: 'Full Stack',
     featured: false,
     highlights: [
-      'Auto-generated docs',
-      'Interactive testing',
-      'Schema validation',
-      'API versioning'
+      'Instant messaging',
+      'Real-time updates',
+      'User authentication',
+      'Message persistence'
+    ]
+  },
+  {
+    id: 6,
+    title: 'ATS Resume System',
+    description: 'Applicant Tracking System for resume management and job application tracking. Streamlines hiring process with automated resume parsing and candidate management.',
+    tech: ['JavaScript', 'React', 'Node.js', 'MongoDB'],
+    github: 'https://github.com/SriramDivi1/ats-resume-system',
+    category: 'Full Stack',
+    featured: false,
+    highlights: [
+      'Resume parsing',
+      'Applicant tracking',
+      'Job posting management',
+      'Candidate database'
+    ]
+  },
+  {
+    id: 7,
+    title: 'Fixapp',
+    description: 'TypeScript-based utility application focused on solving common development workflow challenges with modern tooling and best practices.',
+    tech: ['TypeScript', 'React', 'Node.js'],
+    github: 'https://github.com/SriramDivi1/Fixapp',
+    category: 'Full Stack',
+    featured: false,
+    highlights: [
+      'Type-safe development',
+      'Modern React patterns',
+      'Developer utilities',
+      'Clean architecture'
     ]
   },
 ];
 
-const categories = ['All', 'Frontend', 'Backend', 'DevOps'];
+const categories = ['All', 'Frontend', 'Backend', 'Full Stack'];
 
 const ProjectsSection = () => {
   const { isDark } = useTheme();
