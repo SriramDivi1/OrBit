@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-import { useScrollPosition } from '../hooks/useScroll';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -14,10 +13,7 @@ const navLinks = [
 
 const Navbar = () => {
   const { isDark, toggleTheme } = useTheme();
-  const { scrollPosition, scrollDirection } = useScrollPosition();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const isScrolled = scrollPosition > 50;
 
   return (
     <>
