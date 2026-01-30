@@ -43,7 +43,7 @@ const HeroSection = () => {
   }, [displayText, isTyping, roleIndex]);
 
   const resumeUrl =
-    "https://customer-assets.emergentagent.com/job_portfolio-showcase-595/artifacts/yzeycr7j_Profile.pdf";
+    "https://drive.google.com/file/d/1KgqqiOjLNxX_nIPEOiloH2MJKJis5rvb/view?usp=sharing";
 
   return (
     <section
@@ -136,7 +136,8 @@ const HeroSection = () => {
             >
               <a
                 href={resumeUrl}
-                download
+                target="_blank"
+                rel="noopener noreferrer"
                 data-testid="download-resume-btn"
                 className="group inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white font-semibold rounded-full hover:glow-secondary transition-all"
               >
