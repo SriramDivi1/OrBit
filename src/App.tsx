@@ -17,9 +17,10 @@ import { Plus, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Toaster } from './components/ui/sonner';
 import logo from './assets/logo.png';
+import type { User } from './components/auth/Login';
 
-// Initial Data
-const initialSubscriptions: Subscription[] = [
+// Demo data - kept for reference but not loaded by default
+const demoSubscriptions: Subscription[] = [
   {
     id: '1',
     name: 'Spotify Premium',
@@ -303,8 +304,11 @@ export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentView, setCurrentView] = useState<ViewState>('login');
   
-  // Data State
-  const [subscriptions, setSubscriptions] = useState<Subscription[]>(initialSubscriptions);
+  // User State
+  const [user, setUser] = useState<User | null>(null);
+  
+  // Data State - Start with demo data for showcasing
+  const [subscriptions, setSubscriptions] = useState<Subscription[]>(demoSubscriptions);
   const [searchQuery, setSearchQuery] = useState('');
   
   // UI State
@@ -315,12 +319,15 @@ export default function App() {
   const [selectedSub, setSelectedSub] = useState<Subscription | null>(null);
 
   // Handlers
-  const handleLogin = () => {
+  const handleLogin = (userData: User) => {
+    setUser(userData);
     setIsAuthenticated(true);
     setCurrentView('dashboard');
   };
 
   const handleSignOut = () => {
+    setUser(null);
+    setSubscriptions([]);
     setIsAuthenticated(false);
     setCurrentView('login');
   };
@@ -432,7 +439,7 @@ export default function App() {
         );
       
       case 'settings':
-        return <SettingsView />;
+        return <SettingsView user={user || undefined} />;
       
       case 'reports':
         return <ReportsView subscriptions={subscriptions} />;
@@ -519,6 +526,7 @@ export default function App() {
           onSearch={setSearchQuery}
           onSignOut={handleSignOut}
           onNavigate={(page) => setCurrentView(page as ViewState)}
+          user={user || undefined}
         />
 
         <main className="flex-1 overflow-y-auto p-4 lg:p-8 scroll-smooth">

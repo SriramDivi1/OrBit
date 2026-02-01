@@ -18,14 +18,21 @@ function GoogleIcon({ className }: { className?: string }) {
   );
 }
 
+export interface User {
+  name: string;
+  email: string;
+  avatar: string;
+}
+
 interface AuthProps {
-  onLogin: () => void;
+  onLogin: (user: User) => void;
   onNavigateToSignup: () => void;
 }
 
 export function Login({ onLogin, onNavigateToSignup }: AuthProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [email, setEmail] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +41,12 @@ export function Login({ onLogin, onNavigateToSignup }: AuthProps) {
     setTimeout(() => {
       setIsLoading(false);
       toast.success("Welcome back!");
-      onLogin();
+      const name = email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      onLogin({
+        name,
+        email,
+        avatar: '',
+      });
     }, 1000);
   };
 
@@ -44,7 +56,11 @@ export function Login({ onLogin, onNavigateToSignup }: AuthProps) {
     setTimeout(() => {
       setIsGoogleLoading(false);
       toast.success("Signed in with Google!");
-      onLogin();
+      onLogin({
+        name: 'Google User',
+        email: 'user@gmail.com',
+        avatar: '',
+      });
     }, 1500);
   };
 
@@ -99,6 +115,8 @@ export function Login({ onLogin, onNavigateToSignup }: AuthProps) {
             type="email" 
             placeholder="name@company.com" 
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           
           <div className="space-y-1">

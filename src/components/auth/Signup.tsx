@@ -5,6 +5,7 @@ import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { toast } from "sonner";
 import logo from '../../assets/logo.png';
+import type { User } from './Login';
 
 // Google Icon Component
 function GoogleIcon({ className }: { className?: string }) {
@@ -19,13 +20,16 @@ function GoogleIcon({ className }: { className?: string }) {
 }
 
 interface AuthProps {
-  onSignup: () => void;
+  onSignup: (user: User) => void;
   onNavigateToLogin: () => void;
 }
 
 export function Signup({ onSignup, onNavigateToLogin }: AuthProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +38,11 @@ export function Signup({ onSignup, onNavigateToLogin }: AuthProps) {
     setTimeout(() => {
       setIsLoading(false);
       toast.success("Account created successfully!");
-      onSignup();
+      onSignup({
+        name: `${firstName} ${lastName}`.trim(),
+        email,
+        avatar: '',
+      });
     }, 1500);
   };
 
@@ -44,7 +52,11 @@ export function Signup({ onSignup, onNavigateToLogin }: AuthProps) {
     setTimeout(() => {
       setIsGoogleLoading(false);
       toast.success("Signed up with Google!");
-      onSignup();
+      onSignup({
+        name: 'Google User',
+        email: 'user@gmail.com',
+        avatar: '',
+      });
     }, 1500);
   };
 
@@ -90,8 +102,8 @@ export function Signup({ onSignup, onNavigateToLogin }: AuthProps) {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
-            <Input id="first-name" label="First Name" placeholder="John" required />
-            <Input id="last-name" label="Last Name" placeholder="Doe" required />
+            <Input id="first-name" label="First Name" placeholder="John" required value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <Input id="last-name" label="Last Name" placeholder="Doe" required value={lastName} onChange={(e) => setLastName(e.target.value)} />
           </div>
 
           <Input 
@@ -100,6 +112,8 @@ export function Signup({ onSignup, onNavigateToLogin }: AuthProps) {
             type="email" 
             placeholder="name@company.com" 
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           
           <Input 

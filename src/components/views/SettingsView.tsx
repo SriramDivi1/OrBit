@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent, Button } from '../ui/design-system';
 import { Input } from '../ui/form-elements';
-import { User, Bell, Shield, CreditCard, CreditCard as CreditCardIcon } from 'lucide-react';
+import { User as UserIcon, Bell, Shield, CreditCard, CreditCard as CreditCardIcon } from 'lucide-react';
 import { toast } from "sonner";
 import { Switch } from "../ui/switch";
+import type { User } from '../auth/Login';
 
-export function SettingsView() {
+interface SettingsViewProps {
+  user?: User;
+}
+
+export function SettingsView({ user }: SettingsViewProps) {
   const [activeTab, setActiveTab] = useState('profile');
   const [loading, setLoading] = useState(false);
   
@@ -51,11 +56,11 @@ export function SettingsView() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input label="First Name" defaultValue="Tom" />
-                <Input label="Last Name" defaultValue="Cook" />
+                <Input label="First Name" defaultValue={user?.name?.split(' ')[0] || ''} />
+                <Input label="Last Name" defaultValue={user?.name?.split(' ').slice(1).join(' ') || ''} />
               </div>
-              <Input label="Email Address" defaultValue="tom.cook@example.com" type="email" />
-              <Input label="Phone Number" defaultValue="+1 (555) 000-0000" type="tel" />
+              <Input label="Email Address" defaultValue={user?.email || ''} type="email" />
+              <Input label="Phone Number" defaultValue="" type="tel" placeholder="+1 (555) 000-0000" />
               
               <div className="pt-4 flex justify-end">
                 <Button onClick={handleSave} disabled={loading}>
@@ -213,7 +218,7 @@ export function SettingsView() {
                 : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
             }`}
           >
-            <User className="w-4 h-4" /> Profile
+            <UserIcon className="w-4 h-4" /> Profile
           </button>
           <button 
             onClick={() => setActiveTab('notifications')}
