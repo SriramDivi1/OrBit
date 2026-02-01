@@ -19,7 +19,7 @@ import { Toaster } from './components/ui/sonner';
 import logo from './assets/logo.png';
 import type { User } from './components/auth/Login';
 
-// Demo data - loaded by default as the initial subscriptions (used by the subscriptions useState initialization)
+// Demo data - used to populate the dashboard upon user login
 const demoSubscriptions: Subscription[] = [
   {
     id: '1',
@@ -307,8 +307,8 @@ export default function App() {
   // User State
   const [user, setUser] = useState<User | null>(null);
   
-  // Data State - Start with demo data for showcasing
-  const [subscriptions, setSubscriptions] = useState<Subscription[]>(demoSubscriptions);
+  // Data State - Start with empty subscriptions (populated on login)
+  const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   
   // UI State
