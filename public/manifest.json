@@ -1,0 +1,29 @@
+{
+  "name": "OrBit - Subscription Management",
+  "short_name": "OrBit",
+  "description": "Track and manage all your subscriptions in one place",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFAF5",
+  "theme_color": "#FF971D",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
