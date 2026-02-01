@@ -19,7 +19,7 @@ import { Toaster } from './components/ui/sonner';
 import logo from './assets/logo.png';
 import type { User } from './components/auth/Login';
 
-// Demo data - kept for reference but not loaded by default
+// Demo data - loaded by default as the initial subscriptions (used by the subscriptions useState initialization)
 const demoSubscriptions: Subscription[] = [
   {
     id: '1',
@@ -321,13 +321,13 @@ export default function App() {
   // Handlers
   const handleLogin = (userData: User) => {
     setUser(userData);
+    setSubscriptions(demoSubscriptions); // Restore demo data on login
     setIsAuthenticated(true);
     setCurrentView('dashboard');
   };
 
   const handleSignOut = () => {
     setUser(null);
-    setSubscriptions([]);
     setIsAuthenticated(false);
     setCurrentView('login');
   };
