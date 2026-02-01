@@ -7,7 +7,7 @@
 📍 Location: Bangalore, India  
 🔗 Portfolio: https://sriramdivi.vercel.app  
 💻 GitHub: https://github.com/SriramDivi1  
-🔗 LinkedIn: [Your LinkedIn]
+🔗 LinkedIn: https://www.linkedin.com/in/sriram-divi-dev
 
 ---
 
