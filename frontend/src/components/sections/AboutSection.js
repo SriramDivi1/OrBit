@@ -4,7 +4,7 @@ import { MapPin, Briefcase, GraduationCap, Code2 } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 const stats = [
-  { label: 'Years Experience', value: '2+' },
+  { label: 'Status', value: 'Fresher' },
   { label: 'Projects Built', value: '10+' },
   { label: 'Technologies', value: '15+' },
 ];
@@ -64,7 +64,7 @@ const AboutSection = () => {
                 <div className={`font-mono text-sm space-y-3 ${isDark ? 'text-dark-muted' : 'text-light-muted'}`}>
                   <p><span className="text-primary">const</span> developer = {'{'}</p>
                   <p className="pl-4"><span className="text-secondary">name</span>: <span className="text-green-400">"Sriram Divi"</span>,</p>
-                  <p className="pl-4"><span className="text-secondary">role</span>: <span className="text-green-400">"Full Stack Developer"</span>,</p>
+                  <p className="pl-4"><span className="text-secondary">role</span>: <span className="text-green-400">"Aspiring Full Stack Developer"</span>,</p>
                   <p className="pl-4"><span className="text-secondary">location</span>: <span className="text-green-400">"Bangalore, India"</span>,</p>
                   <p className="pl-4"><span className="text-secondary">passion</span>: <span className="text-green-400">"Building scalable web apps"</span>,</p>
                   <p className="pl-4"><span className="text-secondary">focus</span>: [</p>
@@ -89,19 +89,19 @@ const AboutSection = () => {
             <p className={`text-lg leading-relaxed mb-6 ${
               isDark ? 'text-dark-muted' : 'text-light-muted'
             }`}>
-              Full Stack Developer specializing in building modern web applications with React frontends and scalable backend APIs. I develop full stack web applications using React for dynamic user interfaces and NestJS/Node.js for secure, production-ready REST APIs.
+              A passionate fresher eager to build modern web applications with React frontends and scalable backend APIs. I develop full stack web applications using React for dynamic user interfaces and NestJS/Node.js for secure, production-ready REST APIs through personal projects and learning.
             </p>
             <p className={`text-lg leading-relaxed mb-8 ${
               isDark ? 'text-dark-muted' : 'text-light-muted'
             }`}>
-              My focus includes authentication, role-based access control, and responsive design. I'm passionate about clean code, software architecture, API security, and best practices.
+              My focus includes authentication, role-based access control, and responsive design. I'm passionate about clean code, software architecture, API security, and continuously learning industry best practices.
             </p>
 
             {/* Info Cards */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               {[
                 { icon: MapPin, label: 'Location', value: 'Bangalore, India' },
-                { icon: Briefcase, label: 'Experience', value: '2+ Years' },
+                { icon: Briefcase, label: 'Experience', value: 'Fresher' },
                 { icon: GraduationCap, label: 'Education', value: 'B.Tech CSE' },
                 { icon: Code2, label: 'Specialty', value: 'Full Stack' },
               ].map(({ icon: Icon, label, value }) => (
