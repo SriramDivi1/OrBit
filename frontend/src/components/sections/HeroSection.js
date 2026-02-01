@@ -43,7 +43,7 @@ const HeroSection = () => {
   }, [displayText, isTyping, roleIndex]);
 
   const resumeUrl =
-    "https://drive.google.com/file/d/1KgqqiOjLNxX_nIPEOiloH2MJKJis5rvb/view?usp=sharing";
+    "https://drive.google.com/uc?export=download&id=1KgqqiOjLNxX_nIPEOiloH2MJKJis5rvb";
 
   return (
     <section
