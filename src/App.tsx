@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Sidebar } from './components/dashboard/Sidebar';
 import { Header } from './components/dashboard/Header';
 import { ChartsSection } from './components/dashboard/ChartsSection';
@@ -8,9 +8,11 @@ import { AddSubscriptionModal } from './components/dashboard/AddSubscriptionModa
 import { Login } from './components/auth/Login';
 import { Signup } from './components/auth/Signup';
 import { SettingsView } from './components/views/SettingsView';
+import { CalendarView } from './components/views/CalendarView';
 import { ReportsView } from './components/views/ReportsView';
 import { RemindersView } from './components/views/RemindersView';
 import { SubscriptionsView } from './components/views/SubscriptionsView';
+import { ThemeProvider } from "next-themes";
 import { Button } from './components/ui/design-system';
 import { Modal } from './components/ui/form-elements';
 import { Plus, X } from 'lucide-react';
@@ -298,7 +300,7 @@ const demoSubscriptions: Subscription[] = [
   },
 ];
 
-type ViewState = 'login' | 'signup' | 'dashboard' | 'subscriptions' | 'settings' | 'reports' | 'reminders';
+type ViewState = 'login' | 'signup' | 'dashboard' | 'subscriptions' | 'settings' | 'reports' | 'reminders' | 'calendar';
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -444,6 +446,9 @@ export default function App() {
       case 'reports':
         return <ReportsView subscriptions={subscriptions} />;
 
+      case 'calendar':
+        return <CalendarView />;
+
       case 'reminders':
         return <RemindersView subscriptions={subscriptions} />;
 
@@ -462,119 +467,121 @@ export default function App() {
 
   // Authenticated Layout
   return (
-    <div className="flex h-screen bg-[#F3F4F6] font-sans overflow-hidden">
-      {/* Desktop Sidebar */}
-      <Sidebar 
-        className="hidden lg:flex" 
-        activePage={currentView}
-        onNavigate={(page) => {
-          if (page === 'help') {
-             setIsHelpOpen(true);
-          } else {
-             setCurrentView(page as ViewState);
-          }
-        }}
-        onSignOut={handleSignOut}
-      />
-
-      {/* Mobile Sidebar */}
-      <AnimatePresence>
-        {isMobileSidebarOpen && (
-          <>
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsMobileSidebarOpen(false)}
-              className="fixed inset-0 bg-black/50 z-40 lg:hidden backdrop-blur-sm"
-            />
-            <motion.div
-              initial={{ x: -300 }}
-              animate={{ x: 0 }}
-              exit={{ x: -300 }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 left-0 w-64 z-50 lg:hidden shadow-2xl"
-            >
-              <Sidebar 
-                className="w-full h-full"
-                activePage={currentView}
-                onNavigate={(page) => {
-                  if (page === 'help') {
-                    setIsHelpOpen(true);
-                  } else {
-                    setCurrentView(page as ViewState);
-                  }
-                  setIsMobileSidebarOpen(false);
-                }}
-                onSignOut={handleSignOut}
-              />
-              <button 
-                onClick={() => setIsMobileSidebarOpen(false)}
-                className="absolute top-4 right-4 text-white/50 hover:text-white"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden">
-        <Header 
-          onMenuClick={() => setIsMobileSidebarOpen(true)} 
-          onSearch={setSearchQuery}
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <div className="flex h-screen bg-[#F3F4F6] dark:bg-black font-sans overflow-hidden transition-colors">
+        {/* Desktop Sidebar */}
+        <Sidebar 
+          className="hidden lg:flex" 
+          activePage={currentView}
+          onNavigate={(page) => {
+            if (page === 'help') {
+               setIsHelpOpen(true);
+            } else {
+               setCurrentView(page as ViewState);
+            }
+          }}
           onSignOut={handleSignOut}
-          onNavigate={(page) => setCurrentView(page as ViewState)}
-          user={user || undefined}
         />
 
-        <main className="flex-1 overflow-y-auto p-4 lg:p-8 scroll-smooth">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentView}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
-              {renderContent()}
-            </motion.div>
-          </AnimatePresence>
-        </main>
-      </div>
+        {/* Mobile Sidebar */}
+        <AnimatePresence>
+          {isMobileSidebarOpen && (
+            <>
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsMobileSidebarOpen(false)}
+                className="fixed inset-0 bg-black/50 z-40 lg:hidden backdrop-blur-sm"
+              />
+              <motion.div
+                initial={{ x: -300 }}
+                animate={{ x: 0 }}
+                exit={{ x: -300 }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                className="fixed inset-y-0 left-0 w-64 z-50 lg:hidden shadow-2xl"
+              >
+                <Sidebar 
+                  className="w-full h-full"
+                  activePage={currentView}
+                  onNavigate={(page) => {
+                    if (page === 'help') {
+                      setIsHelpOpen(true);
+                    } else {
+                      setCurrentView(page as ViewState);
+                    }
+                    setIsMobileSidebarOpen(false);
+                  }}
+                  onSignOut={handleSignOut}
+                />
+                <button 
+                  onClick={() => setIsMobileSidebarOpen(false)}
+                  className="absolute top-4 right-4 text-white/50 hover:text-white"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
 
-      <EditSubscriptionModal 
-        isOpen={isEditModalOpen}
-        onClose={() => setIsEditModalOpen(false)}
-        subscription={selectedSub}
-        onSave={handleSaveEdit}
-      />
+        {/* Main Content */}
+        <div className="flex-1 flex flex-col h-full overflow-hidden">
+          <Header 
+            onMenuClick={() => setIsMobileSidebarOpen(true)} 
+            onSearch={setSearchQuery}
+            onSignOut={handleSignOut}
+            onNavigate={(page) => setCurrentView(page as ViewState)}
+            user={user || undefined}
+          />
 
-      <AddSubscriptionModal 
-        isOpen={isAddModalOpen}
-        onClose={() => setIsAddModalOpen(false)}
-        onAdd={handleAdd}
-      />
-
-      {/* Help Modal */}
-      <Modal
-        isOpen={isHelpOpen}
-        onClose={() => setIsHelpOpen(false)}
-        title="Help & Support"
-        footer={<Button onClick={() => setIsHelpOpen(false)}>Close</Button>}
-      >
-        <div className="text-center p-4">
-          <img src={logo} alt="OrBit Logo" className="w-14 h-14 rounded-xl mx-auto mb-4 shadow-md" />
-          <h3 className="text-lg font-semibold text-gray-900">Need assistance?</h3>
-          <p className="text-gray-500 mt-2 mb-4">
-            Our support team is available 24/7. Contact us at <a href="mailto:support@orbit.finance" className="text-[#FF971D] hover:underline">support@orbit.finance</a> or check our documentation.
-          </p>
-          <Button variant="secondary" className="w-full">View Documentation</Button>
+          <main className="flex-1 overflow-y-auto p-4 lg:p-8 scroll-smooth">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentView}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+              >
+                {renderContent()}
+              </motion.div>
+            </AnimatePresence>
+          </main>
         </div>
-      </Modal>
-      <Toaster />
-    </div>
+
+        <EditSubscriptionModal 
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          subscription={selectedSub}
+          onSave={handleSaveEdit}
+        />
+
+        <AddSubscriptionModal 
+          isOpen={isAddModalOpen}
+          onClose={() => setIsAddModalOpen(false)}
+          onAdd={handleAdd}
+        />
+
+        {/* Help Modal */}
+        <Modal
+          isOpen={isHelpOpen}
+          onClose={() => setIsHelpOpen(false)}
+          title="Help & Support"
+          footer={<Button onClick={() => setIsHelpOpen(false)}>Close</Button>}
+        >
+          <div className="text-center p-4">
+            <img src={logo} alt="OrBit Logo" className="w-14 h-14 rounded-xl mx-auto mb-4 shadow-md" />
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Need assistance?</h3>
+            <p className="text-gray-500 dark:text-gray-400 mt-2 mb-4">
+              Our support team is available 24/7. Contact us at <a href="mailto:support@orbit.finance" className="text-[#FF971D] hover:underline">support@orbit.finance</a> or check our documentation.
+            </p>
+            <Button variant="secondary" className="w-full">View Documentation</Button>
+          </div>
+        </Modal>
+        <Toaster />
+      </div>
+    </ThemeProvider>
   );
 }
 

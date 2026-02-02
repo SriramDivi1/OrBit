@@ -1,7 +1,7 @@
-import React from 'react';
+
 import { Card, Button } from '../ui/design-system';
 import { Subscription } from '../dashboard/SubscriptionTable';
-import { Bell, CheckCircle, Clock, AlertCircle, Calendar as CalendarIcon } from 'lucide-react';
+import { Bell, CheckCircle, AlertCircle, Calendar as CalendarIcon } from 'lucide-react';
 import { motion } from 'motion/react';
 import { toast } from "sonner";
 

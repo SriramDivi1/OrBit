@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { 
   LayoutDashboard, 
   CreditCard, 
@@ -6,7 +6,8 @@ import {
   Settings, 
   Headset, 
   LogOut, 
-  FileText
+  FileText,
+  Calendar
 } from 'lucide-react';
 import { cn } from '../ui/design-system';
 import logo from '../../assets/logo.png';
@@ -23,6 +24,7 @@ export function Sidebar({ className, activePage, onNavigate, onSignOut }: Sideba
     { icon: LayoutDashboard, label: 'Dashboard', id: 'dashboard' },
     { icon: CreditCard, label: 'Subscriptions', id: 'subscriptions' },
     { icon: FileText, label: 'Reports', id: 'reports' },
+    { icon: Calendar, label: 'Calendar', id: 'calendar' },
     { icon: Bell, label: 'Reminders', id: 'reminders' },
     { icon: Settings, label: 'Settings', id: 'settings' },
   ];

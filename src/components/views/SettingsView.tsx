@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent, Button } from '../ui/design-system';
 import { Input } from '../ui/form-elements';
 import { User as UserIcon, Bell, Shield, CreditCard, CreditCard as CreditCardIcon } from 'lucide-react';

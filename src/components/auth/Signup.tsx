@@ -61,16 +61,20 @@ export function Signup({ onSignup, onNavigateToLogin }: AuthProps) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#FFFAF5] p-4">
+    <div className="min-h-screen flex items-center justify-center auth-bg p-4 relative overflow-hidden">
+      {/* Animated Orbs */}
+      <div className="auth-orb w-64 h-64 bg-purple-600/30 top-[-5%] right-[-5%] blur-[100px]" />
+      <div className="auth-orb w-96 h-96 bg-orange-500/20 bottom-[-10%] left-[-10%] blur-[120px]" style={{ animationDelay: '-5s' }} />
+
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-100"
+        className="glass p-8 rounded-2xl w-full max-w-md relative z-10"
       >
         <div className="text-center mb-8">
           <img src={logo} alt="OrBit Logo" className="w-16 h-16 rounded-2xl mx-auto mb-4 shadow-lg shadow-orange-900/20 transform -rotate-3" />
-          <h1 className="text-2xl font-bold text-gray-900">Join OrBit</h1>
-          <p className="text-gray-500 mt-2">Start managing your financial orbit</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Join OrBit</h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-2">Start managing your financial orbit</p>
         </div>
 
         {/* Google Sign Up Button */}
@@ -78,7 +82,7 @@ export function Signup({ onSignup, onNavigateToLogin }: AuthProps) {
           type="button"
           onClick={handleGoogleSignUp}
           disabled={isGoogleLoading}
-          className="w-full flex items-center justify-center gap-3 h-11 px-4 bg-white border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full flex items-center justify-center gap-3 h-11 px-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isGoogleLoading ? (
             <span className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
@@ -93,52 +97,64 @@ export function Signup({ onSignup, onNavigateToLogin }: AuthProps) {
         {/* Divider */}
         <div className="relative my-6">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-200"></div>
+            <div className="w-full border-t border-gray-200 dark:border-gray-700"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-4 bg-white text-gray-500">or sign up with email</span>
+            <span className="px-4 bg-transparent text-gray-500 dark:text-gray-400 font-medium bg-white/50 backdrop-blur-sm rounded-full">or sign up with email</span>
           </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
-            <Input id="first-name" label="First Name" placeholder="John" required value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-            <Input id="last-name" label="Last Name" placeholder="Doe" required value={lastName} onChange={(e) => setLastName(e.target.value)} />
+            <div>
+              <label htmlFor="first-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">First Name</label>
+              <Input id="first-name" placeholder="John" required value={firstName} onChange={(e) => setFirstName(e.target.value)} className="bg-white/50 dark:bg-gray-950/50 border-gray-200 dark:border-gray-700 focus:ring-[#FF971D]" />
+            </div>
+            <div>
+              <label htmlFor="last-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Last Name</label>
+              <Input id="last-name" placeholder="Doe" required value={lastName} onChange={(e) => setLastName(e.target.value)} className="bg-white/50 dark:bg-gray-950/50 border-gray-200 dark:border-gray-700 focus:ring-[#FF971D]" />
+            </div>
           </div>
 
-          <Input 
-            id="email" 
-            label="Email Address" 
-            type="email" 
-            placeholder="name@company.com" 
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Email Address</label>
+            <Input 
+              id="email" 
+              type="email" 
+              placeholder="name@company.com" 
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="bg-white/50 dark:bg-gray-950/50 border-gray-200 dark:border-gray-700 focus:ring-[#FF971D]"
+            />
+          </div>
           
-          <Input 
-            id="password" 
-            label="Password" 
-            type="password" 
-            placeholder="Create a password" 
-            required 
-          />
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Password</label>
+            <Input 
+              id="password" 
+              type="password" 
+              placeholder="Create a password" 
+              required 
+              className="bg-white/50 dark:bg-gray-950/50 border-gray-200 dark:border-gray-700 focus:ring-[#FF971D]"
+            />
+          </div>
 
           <div className="flex items-start gap-2">
             <input 
               type="checkbox" 
               id="terms" 
-              className="mt-1 rounded border-gray-300 text-[#FF971D] focus:ring-[#FF971D]" 
+              className="mt-1 rounded border-gray-300 dark:border-gray-600 text-[#FF971D] focus:ring-[#FF971D] bg-white/50 dark:bg-black/50" 
               required
             />
-            <label htmlFor="terms" className="text-sm text-gray-500">
+            <label htmlFor="terms" className="text-sm text-gray-500 dark:text-gray-400">
               I agree to the <a href="#" className="text-[#FF971D] hover:underline">Terms of Service</a> and <a href="#" className="text-[#FF971D] hover:underline">Privacy Policy</a>
             </label>
           </div>
 
           <Button 
             type="submit" 
-            className="w-full justify-center h-11"
+            className="w-full justify-center h-11 bg-gradient-to-r from-[#FF971D] to-[#FFAD4D] hover:from-[#E68200] hover:to-[#FF971D] shadow-lg shadow-orange-500/20"
             disabled={isLoading}
           >
             {isLoading ? (
@@ -151,7 +167,7 @@ export function Signup({ onSignup, onNavigateToLogin }: AuthProps) {
           </Button>
         </form>
 
-        <div className="mt-6 text-center text-sm text-gray-500">
+        <div className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
           Already have an account?{' '}
           <button 
             onClick={onNavigateToLogin}

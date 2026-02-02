@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { Card, CardContent, Button, Badge } from '../ui/design-system';
+import { useState, useMemo } from 'react';
+import { Card, Button, Badge } from '../ui/design-system';
 import { Subscription } from '../dashboard/SubscriptionTable';
 import { 
   Search, 

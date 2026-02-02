@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Card, CardContent } from '../ui/design-system';
 import { ChartsSection } from '../dashboard/ChartsSection';
 import { Subscription } from '../dashboard/SubscriptionTable';

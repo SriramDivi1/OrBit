@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Card, CardHeader, CardTitle, Badge, Button } from '../ui/design-system';
 import { Edit, Trash2, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';

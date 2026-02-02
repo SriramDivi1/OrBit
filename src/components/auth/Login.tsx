@@ -69,16 +69,20 @@ export function Login({ onLogin, onNavigateToSignup }: AuthProps) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#FFFAF5] p-4">
+    <div className="min-h-screen flex items-center justify-center auth-bg p-4 relative overflow-hidden">
+      {/* Animated Orbs */}
+      <div className="auth-orb w-64 h-64 bg-purple-600/30 top-[-5%] left-[-5%] blur-[100px]" />
+      <div className="auth-orb w-96 h-96 bg-orange-500/20 bottom-[-10%] right-[-10%] blur-[120px]" style={{ animationDelay: '-5s' }} />
+
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-100"
+        className="glass p-8 rounded-2xl w-full max-w-md relative z-10"
       >
         <div className="text-center mb-8">
           <img src={logo} alt="OrBit Logo" className="w-16 h-16 rounded-2xl mx-auto mb-4 shadow-lg shadow-orange-900/20 transform rotate-3" />
-          <h1 className="text-2xl font-bold text-gray-900">Welcome to OrBit</h1>
-          <p className="text-gray-500 mt-2">Enter your details to access your dashboard</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Welcome back</h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-2">Enter your details to access your dashboard</p>
         </div>
 
         {/* Google Sign In Button */}
@@ -86,7 +90,7 @@ export function Login({ onLogin, onNavigateToSignup }: AuthProps) {
           type="button"
           onClick={handleGoogleSignIn}
           disabled={isGoogleLoading}
-          className="w-full flex items-center justify-center gap-3 h-11 px-4 bg-white border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full flex items-center justify-center gap-3 h-11 px-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isGoogleLoading ? (
             <span className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
@@ -101,46 +105,52 @@ export function Login({ onLogin, onNavigateToSignup }: AuthProps) {
         {/* Divider */}
         <div className="relative my-6">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-200"></div>
+            <div className="w-full border-t border-gray-200 dark:border-gray-700"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-4 bg-white text-gray-500">or continue with email</span>
+            <span className="px-4 bg-transparent text-gray-500 dark:text-gray-400 font-medium bg-white/50 backdrop-blur-sm rounded-full">or continue with email</span>
           </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          <Input 
-            id="email" 
-            label="Email Address" 
-            type="email" 
-            placeholder="name@company.com" 
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          
-          <div className="space-y-1">
-            <div className="flex items-center justify-between">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-              <button 
-                type="button"
-                onClick={handleForgotPassword}
-                className="text-sm font-medium text-[#FF971D] hover:text-[#E68200]"
-              >
-                Forgot password?
-              </button>
-            </div>
-            <Input 
-              id="password" 
-              type="password" 
-              placeholder="••••••••" 
-              required 
-            />
+          <div className="space-y-4">
+             <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Email Address</label>
+                <Input 
+                  id="email" 
+                  type="email" 
+                  placeholder="name@company.com" 
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="bg-white/50 dark:bg-gray-950/50 border-gray-200 dark:border-gray-700 focus:ring-[#FF971D]"
+                />
+             </div>
+             
+             <div>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+                  <button 
+                    type="button"
+                    onClick={handleForgotPassword}
+                    className="text-sm font-medium text-[#FF971D] hover:text-[#E68200]"
+                  >
+                    Forgot password?
+                  </button>
+                </div>
+                <Input 
+                  id="password" 
+                  type="password" 
+                  placeholder="••••••••" 
+                  required
+                  className="bg-white/50 dark:bg-gray-950/50 border-gray-200 dark:border-gray-700 focus:ring-[#FF971D]"
+                />
+             </div>
           </div>
 
           <Button 
             type="submit" 
-            className="w-full justify-center h-11"
+            className="w-full justify-center h-11 bg-gradient-to-r from-[#FF971D] to-[#FFAD4D] hover:from-[#E68200] hover:to-[#FF971D] shadow-lg shadow-orange-500/20"
             disabled={isLoading}
           >
             {isLoading ? (
@@ -153,7 +163,7 @@ export function Login({ onLogin, onNavigateToSignup }: AuthProps) {
           </Button>
         </form>
 
-        <div className="mt-6 text-center text-sm text-gray-500">
+        <div className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
           Don't have an account?{' '}
           <button 
             onClick={onNavigateToSignup}
