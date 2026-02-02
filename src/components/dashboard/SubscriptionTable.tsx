@@ -48,17 +48,17 @@ export function SubscriptionTable({ subscriptions, onEdit, onDelete }: Subscript
   };
 
   return (
-    <Card className="overflow-hidden">
-      <CardHeader className="flex flex-row items-center justify-between border-b border-gray-100 bg-gray-50/50">
-        <CardTitle>Recent Subscriptions</CardTitle>
-        <Button variant="secondary" size="sm" onClick={handleExport}>
+    <Card className="overflow-hidden dark:bg-gray-900 dark:border-gray-800">
+      <CardHeader className="flex flex-row items-center justify-between border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/50">
+        <CardTitle className="dark:text-white">Recent Subscriptions</CardTitle>
+        <Button variant="secondary" size="sm" onClick={handleExport} className="dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-700">
           <ExternalLink className="w-4 h-4 mr-2" />
           Export Report
         </Button>
       </CardHeader>
       <div className="overflow-x-auto">
         <table className="w-full text-sm text-left">
-          <thead className="text-xs text-gray-500 uppercase bg-gray-50/50">
+          <thead className="text-xs text-gray-500 dark:text-gray-400 uppercase bg-gray-50/50 dark:bg-gray-800/50">
             <tr>
               <th className="px-6 py-4 font-medium">Service Name</th>
               <th className="px-6 py-4 font-medium">Category</th>
@@ -68,7 +68,7 @@ export function SubscriptionTable({ subscriptions, onEdit, onDelete }: Subscript
               <th className="px-6 py-4 font-medium text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100">
+          <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
             {subscriptions.length === 0 ? (
                <tr>
                 <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
@@ -82,10 +82,10 @@ export function SubscriptionTable({ subscriptions, onEdit, onDelete }: Subscript
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="bg-white hover:bg-gray-50/80 transition-colors group"
+                  className="bg-white dark:bg-gray-900 hover:bg-gray-50/80 dark:hover:bg-gray-800/80 transition-colors group"
                 >
-                  <td className="px-6 py-4 font-medium text-gray-900 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center p-2 overflow-hidden border border-gray-200">
+                  <td className="px-6 py-4 font-medium text-gray-900 dark:text-white flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center p-2 overflow-hidden border border-gray-200 dark:border-gray-700">
                       <img 
                         src={sub.logo} 
                         alt={sub.name}
@@ -96,13 +96,13 @@ export function SubscriptionTable({ subscriptions, onEdit, onDelete }: Subscript
                       />
                     </div>
                     <div>
-                      <div className="font-semibold">{sub.name}</div>
-                      <div className="text-xs text-gray-500">{sub.cycle}</div>
+                      <div className="font-semibold dark:text-white">{sub.name}</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">{sub.cycle}</div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-gray-500">{sub.category}</td>
-                  <td className="px-6 py-4 font-semibold text-gray-900">{sub.amount}</td>
-                  <td className="px-6 py-4 text-gray-500">{sub.nextPayment}</td>
+                  <td className="px-6 py-4 text-gray-500 dark:text-gray-400">{sub.category}</td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">{sub.amount}</td>
+                  <td className="px-6 py-4 text-gray-500 dark:text-gray-400">{sub.nextPayment}</td>
                   <td className="px-6 py-4">
                     <Badge variant={sub.status}>{sub.statusLabel}</Badge>
                   </td>

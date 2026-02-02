@@ -55,7 +55,7 @@ export function Header({ onMenuClick, onSearch, onSignOut, onNavigate, user }: H
           <span className="font-bold text-gray-900">OrBit</span>
         </div>
         
-        <h1 className="text-xl font-bold text-gray-900 hidden lg:block">Overview</h1>
+        <h1 className="text-xl font-bold text-gray-900 dark:text-white hidden lg:block">Overview</h1>
         
         <div className="hidden md:flex ml-4 lg:ml-8 items-center bg-gray-50 rounded-lg px-3 py-1.5 border border-gray-200 focus-within:ring-2 focus-within:ring-[#FF971D] focus-within:border-transparent transition-all w-full max-w-sm">
           <Search className="w-4 h-4 text-gray-400 mr-2" />
@@ -63,7 +63,7 @@ export function Header({ onMenuClick, onSearch, onSignOut, onNavigate, user }: H
             type="text" 
             placeholder="Search subscriptions..." 
             onChange={(e) => onSearch(e.target.value)}
-            className="bg-transparent border-none text-sm w-full focus:outline-none text-gray-700 placeholder:text-gray-400"
+            className="bg-transparent border-none text-sm w-full focus:outline-none text-gray-700 dark:text-gray-200 placeholder:text-gray-400"
           />
         </div>
       </div>

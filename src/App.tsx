@@ -372,8 +372,8 @@ export default function App() {
              {/* Page Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Dashboard</h2>
-                <p className="text-gray-500 mt-1">Overview of your subscriptions and spending.</p>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Dashboard</h2>
+                <p className="text-gray-500 dark:text-gray-400 mt-1">Overview of your subscriptions and spending.</p>
               </div>
               <Button 
                 onClick={() => setIsAddModalOpen(true)}
@@ -603,18 +603,18 @@ function StatsCard({ title, value, trend, trendLabel, icon, color, trendColor, d
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay }}
-      className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between hover:shadow-md transition-shadow"
+      className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center justify-between hover:shadow-md transition-shadow"
     >
       <div>
-        <p className="text-sm font-medium text-gray-500">{title}</p>
-        <h3 className="text-3xl font-bold text-gray-900 mt-2">{value}</h3>
-        <p className={`text-xs mt-1 flex items-center font-medium ${trendColor === 'text-gray-500' ? 'text-gray-500' : 'text-green-600'}`}>
-          {trendColor !== 'text-gray-500' && <span className="bg-green-100 px-1.5 py-0.5 rounded mr-1">{trend}</span>}
+        <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{title}</p>
+        <h3 className="text-3xl font-bold text-gray-900 dark:text-white mt-2">{value}</h3>
+        <p className={`text-xs mt-1 flex items-center font-medium ${trendColor === 'text-gray-500' ? 'text-gray-500 dark:text-gray-400' : 'text-green-600'}`}>
+          {trendColor !== 'text-gray-500' && <span className="bg-green-100 dark:bg-green-900/30 px-1.5 py-0.5 rounded mr-1">{trend}</span>}
           {trendColor === 'text-gray-500' && <span className="mr-1">{trend}</span>}
           {trendLabel}
         </p>
       </div>
-      <div className={`w-12 h-12 ${color} rounded-full flex items-center justify-center`}>
+      <div className={`w-12 h-12 ${color} dark:bg-gray-800 rounded-full flex items-center justify-center`}>
         <span className="text-2xl">{icon}</span>
       </div>
     </motion.div>

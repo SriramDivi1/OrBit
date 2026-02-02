@@ -39,16 +39,16 @@ export function SettingsView({ user }: SettingsViewProps) {
     switch(activeTab) {
       case 'profile':
         return (
-          <Card>
-            <CardHeader className="border-b border-gray-100">
-              <CardTitle>Profile Information</CardTitle>
+          <Card className="dark:bg-gray-900 dark:border-gray-800">
+            <CardHeader className="border-b border-gray-100 dark:border-gray-800">
+              <CardTitle className="dark:text-white">Profile Information</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 pt-6">
               <div className="flex items-center gap-4 mb-6">
                 <img 
                   src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" 
                   alt="Profile" 
-                  className="w-20 h-20 rounded-full border-4 border-gray-50"
+                  className="w-20 h-20 rounded-full border-4 border-gray-50 dark:border-gray-800"
                 />
                 <div>
                   <Button variant="secondary" size="sm" onClick={handleChangeAvatar}>Change Avatar</Button>
@@ -73,37 +73,37 @@ export function SettingsView({ user }: SettingsViewProps) {
       
       case 'notifications':
         return (
-          <Card>
-            <CardHeader className="border-b border-gray-100">
-              <CardTitle>Notification Preferences</CardTitle>
+          <Card className="dark:bg-gray-900 dark:border-gray-800">
+            <CardHeader className="border-b border-gray-100 dark:border-gray-800">
+              <CardTitle className="dark:text-white">Notification Preferences</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6 pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-medium text-gray-900">Email Notifications</h4>
-                  <p className="text-sm text-gray-500">Receive emails about your subscription updates.</p>
+                  <h4 className="font-medium text-gray-900 dark:text-white">Email Notifications</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Receive emails about your subscription updates.</p>
                 </div>
                 <Switch 
                   checked={emailNotifs}
                   onCheckedChange={setEmailNotifs}
                 />
               </div>
-              <div className="h-px bg-gray-100"></div>
+              <div className="h-px bg-gray-100 dark:bg-gray-800"></div>
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-medium text-gray-900">Marketing Emails</h4>
-                  <p className="text-sm text-gray-500">Receive emails about new features and offers.</p>
+                  <h4 className="font-medium text-gray-900 dark:text-white">Marketing Emails</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Receive emails about new features and offers.</p>
                 </div>
                 <Switch 
                   checked={marketingEmails}
                   onCheckedChange={setMarketingEmails}
                 />
               </div>
-              <div className="h-px bg-gray-100"></div>
+              <div className="h-px bg-gray-100 dark:bg-gray-800"></div>
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-medium text-gray-900">Push Notifications</h4>
-                  <p className="text-sm text-gray-500">Receive push notifications on your device.</p>
+                  <h4 className="font-medium text-gray-900 dark:text-white">Push Notifications</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Receive push notifications on your device.</p>
                 </div>
                 <Switch 
                   checked={pushNotifs}
@@ -122,24 +122,24 @@ export function SettingsView({ user }: SettingsViewProps) {
 
       case 'security':
         return (
-          <Card>
-            <CardHeader className="border-b border-gray-100">
-              <CardTitle>Security Settings</CardTitle>
+          <Card className="dark:bg-gray-900 dark:border-gray-800">
+            <CardHeader className="border-b border-gray-100 dark:border-gray-800">
+              <CardTitle className="dark:text-white">Security Settings</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6 pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-medium text-gray-900">Two-Factor Authentication</h4>
-                  <p className="text-sm text-gray-500">Add an extra layer of security to your account.</p>
+                  <h4 className="font-medium text-gray-900 dark:text-white">Two-Factor Authentication</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Add an extra layer of security to your account.</p>
                 </div>
                 <Switch 
                   checked={twoFactor}
                   onCheckedChange={setTwoFactor}
                 />
               </div>
-              <div className="h-px bg-gray-100"></div>
+              <div className="h-px bg-gray-100 dark:bg-gray-800"></div>
               <div className="space-y-4">
-                <h4 className="font-medium text-gray-900">Change Password</h4>
+                <h4 className="font-medium text-gray-900 dark:text-white">Change Password</h4>
                 <Input label="Current Password" type="password" placeholder="••••••••" />
                 <Input label="New Password" type="password" placeholder="••••••••" />
                 <Input label="Confirm New Password" type="password" placeholder="••••••••" />
@@ -156,9 +156,9 @@ export function SettingsView({ user }: SettingsViewProps) {
 
       case 'billing':
         return (
-           <Card>
-            <CardHeader className="border-b border-gray-100">
-              <CardTitle>Billing Information</CardTitle>
+           <Card className="dark:bg-gray-900 dark:border-gray-800">
+            <CardHeader className="border-b border-gray-100 dark:border-gray-800">
+              <CardTitle className="dark:text-white">Billing Information</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6 pt-6">
               <div className="p-4 bg-orange-50 rounded-lg border border-orange-100 flex items-start gap-4">
@@ -175,13 +175,13 @@ export function SettingsView({ user }: SettingsViewProps) {
               </div>
 
               <div className="space-y-4">
-                 <h4 className="font-medium text-gray-900">Payment Method</h4>
-                 <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                 <h4 className="font-medium text-gray-900 dark:text-white">Payment Method</h4>
+                 <div className="flex items-center justify-between p-3 border border-gray-200 dark:border-gray-700 rounded-lg dark:bg-gray-800/50">
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-6 bg-gray-200 rounded flex items-center justify-center text-xs font-bold text-gray-600">VISA</div>
-                        <span className="text-sm font-medium">•••• •••• •••• 4242</span>
+                        <div className="w-10 h-6 bg-gray-200 dark:bg-gray-700 rounded flex items-center justify-center text-xs font-bold text-gray-600 dark:text-gray-300">VISA</div>
+                        <span className="text-sm font-medium dark:text-gray-200">•••• •••• •••• 4242</span>
                     </div>
-                    <Button variant="ghost" size="sm" className="text-gray-500 hover:text-gray-900">Edit</Button>
+                    <Button variant="ghost" size="sm" className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">Edit</Button>
                  </div>
               </div>
               
@@ -203,8 +203,8 @@ export function SettingsView({ user }: SettingsViewProps) {
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-10">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Settings</h2>
-        <p className="text-gray-500 mt-1">Manage your account preferences and settings.</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Settings</h2>
+        <p className="text-gray-500 dark:text-gray-400 mt-1">Manage your account preferences and settings.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -215,7 +215,7 @@ export function SettingsView({ user }: SettingsViewProps) {
             className={`w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
               activeTab === 'profile' 
                 ? 'bg-[#FF971D] text-white shadow-sm' 
-                : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
             <UserIcon className="w-4 h-4" /> Profile
@@ -225,7 +225,7 @@ export function SettingsView({ user }: SettingsViewProps) {
              className={`w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
               activeTab === 'notifications' 
                 ? 'bg-[#FF971D] text-white shadow-sm' 
-                : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
             <Bell className="w-4 h-4" /> Notifications
@@ -235,7 +235,7 @@ export function SettingsView({ user }: SettingsViewProps) {
              className={`w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
               activeTab === 'security' 
                 ? 'bg-[#FF971D] text-white shadow-sm' 
-                : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
             <Shield className="w-4 h-4" /> Security
@@ -245,7 +245,7 @@ export function SettingsView({ user }: SettingsViewProps) {
              className={`w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
               activeTab === 'billing' 
                 ? 'bg-[#FF971D] text-white shadow-sm' 
-                : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
             }`}
           >
             <CreditCard className="w-4 h-4" /> Billing

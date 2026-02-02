@@ -22,17 +22,17 @@ export function ReportsView({ subscriptions }: ReportsViewProps) {
     <div className="max-w-7xl mx-auto space-y-8 pb-10">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Financial Reports</h2>
-          <p className="text-gray-500 mt-1">Detailed analysis of your subscription spending.</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Financial Reports</h2>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">Detailed analysis of your subscription spending.</p>
         </div>
         <div className="flex gap-2">
-           <Button variant="secondary" className="gap-2" onClick={() => toast.info('Date range updated to "This Year"')}>
+           <Button variant="secondary" className="gap-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:border-gray-700" onClick={() => toast.info('Date range updated to "This Year"')}>
             <Calendar className="w-4 h-4" /> This Year
           </Button>
-           <Button variant="secondary" className="gap-2" onClick={() => toast.info('Filter options panel opened')}>
+           <Button variant="secondary" className="gap-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:border-gray-700" onClick={() => toast.info('Filter options panel opened')}>
             <Filter className="w-4 h-4" /> Filter
           </Button>
-          <Button variant="secondary" className="gap-2" onClick={() => toast.success('Report downloaded successfully')}>
+          <Button variant="secondary" className="gap-2 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:border-gray-700" onClick={() => toast.success('Report downloaded successfully')}>
             <Download className="w-4 h-4" /> Export PDF
           </Button>
         </div>
@@ -46,17 +46,17 @@ export function ReportsView({ subscriptions }: ReportsViewProps) {
             <p className="text-sm text-white/75 mt-2">Projected based on current active subscriptions</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="dark:bg-gray-900 dark:border-gray-800">
            <CardContent className="pt-6">
-            <p className="text-gray-500 font-medium">Average Monthly Cost</p>
-            <h3 className="text-3xl font-bold text-gray-900 mt-2">${averageCost.toFixed(2)}</h3>
+            <p className="text-gray-500 dark:text-gray-400 font-medium">Average Monthly Cost</p>
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mt-2">${averageCost.toFixed(2)}</h3>
             <p className="text-sm text-gray-400 mt-2">Per subscription</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="dark:bg-gray-900 dark:border-gray-800">
            <CardContent className="pt-6">
-            <p className="text-gray-500 font-medium">Highest Expense</p>
-            <h3 className="text-3xl font-bold text-gray-900 mt-2">{mostExpensive ? mostExpensive.amount : '$0.00'}</h3>
+            <p className="text-gray-500 dark:text-gray-400 font-medium">Highest Expense</p>
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mt-2">{mostExpensive ? mostExpensive.amount : '$0.00'}</h3>
             <p className="text-sm text-gray-400 mt-2">{mostExpensive ? mostExpensive.name : 'N/A'}</p>
           </CardContent>
         </Card>
@@ -64,9 +64,9 @@ export function ReportsView({ subscriptions }: ReportsViewProps) {
 
       <ChartsSection subscriptions={subscriptions} />
 
-      <Card>
+      <Card className="dark:bg-gray-900 dark:border-gray-800">
         <CardContent className="p-6">
-          <h3 className="font-bold text-lg mb-6">Category Breakdown</h3>
+          <h3 className="font-bold text-lg mb-6 text-gray-900 dark:text-white">Category Breakdown</h3>
           <div className="space-y-6">
             {categories.map(cat => {
               const catSubs = subscriptions.filter(s => s.category === cat);
@@ -76,10 +76,10 @@ export function ReportsView({ subscriptions }: ReportsViewProps) {
               return (
                 <div key={cat}>
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="font-medium text-gray-700">{cat}</span>
-                    <span className="text-gray-500 font-medium">${catTotal.toFixed(2)} <span className="text-gray-400 font-normal ml-1">({percentage.toFixed(0)}%)</span></span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300">{cat}</span>
+                    <span className="text-gray-500 dark:text-gray-400 font-medium">${catTotal.toFixed(2)} <span className="text-gray-400 dark:text-gray-500 font-normal ml-1">({percentage.toFixed(0)}%)</span></span>
                   </div>
-                  <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                  <div className="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2.5 overflow-hidden">
                     <div 
                       className="bg-[#FF971D] h-full rounded-full transition-all duration-1000 ease-out" 
                       style={{ width: `${percentage}%` }}

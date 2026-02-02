@@ -50,7 +50,7 @@ export function Sidebar({ className, activePage, onNavigate, onSignOut }: Sideba
               "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
               activePage === item.id
                 ? "bg-[#FF971D] text-white shadow-lg shadow-orange-900/20" 
-                : "text-gray-400 hover:text-white hover:bg-white/5"
+                : "text-gray-400 dark:text-gray-300 hover:text-white hover:bg-white/5"
             )}
           >
             <item.icon className="w-5 h-5" />

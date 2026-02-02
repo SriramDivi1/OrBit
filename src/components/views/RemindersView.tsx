@@ -39,8 +39,8 @@ export function RemindersView({ subscriptions }: RemindersViewProps) {
     <div className="max-w-4xl mx-auto space-y-6 pb-10">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Payment Reminders</h2>
-          <p className="text-gray-500 mt-1">Don't miss a payment. Track upcoming bills here.</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Payment Reminders</h2>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">Don't miss a payment. Track upcoming bills here.</p>
         </div>
         <Button className="gap-2" onClick={handleGlobalAlert}>
           <Bell className="w-4 h-4" /> Set Global Alert
@@ -63,10 +63,10 @@ export function RemindersView({ subscriptions }: RemindersViewProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
             >
-              <Card className={`border-l-4 ${statusColor} hover:shadow-md transition-shadow`}>
+              <Card className={`border-l-4 ${statusColor} hover:shadow-md transition-shadow dark:bg-gray-900 dark:border-gray-800 ${isOverdue ? 'dark:border-l-gray-600' : ''}`}>
                 <div className="p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                  <div className="flex items-center gap-4">
-                     <div className="w-12 h-12 rounded-lg bg-gray-50 flex items-center justify-center p-2 border border-gray-100">
+                   <div className="flex items-center gap-4">
+                     <div className="w-12 h-12 rounded-lg bg-gray-50 dark:bg-gray-800 flex items-center justify-center p-2 border border-gray-100 dark:border-gray-700">
                         <img 
                           src={sub.logo} 
                           alt={sub.name}
@@ -77,8 +77,8 @@ export function RemindersView({ subscriptions }: RemindersViewProps) {
                         />
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-900">{sub.name}</h3>
-                        <p className="text-sm text-gray-500">Amount: <span className="font-semibold text-gray-900">{sub.amount}</span></p>
+                        <h3 className="font-bold text-gray-900 dark:text-white">{sub.name}</h3>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Amount: <span className="font-semibold text-gray-900 dark:text-white">{sub.amount}</span></p>
                       </div>
                   </div>
 
@@ -89,7 +89,7 @@ export function RemindersView({ subscriptions }: RemindersViewProps) {
                       ) : (
                         <CalendarIcon className="w-4 h-4 text-gray-400" />
                       )}
-                      <span className={`text-sm font-medium ${isUrgent ? 'text-[#F05252]' : 'text-gray-600'}`}>
+                      <span className={`text-sm font-medium ${isUrgent ? 'text-[#F05252]' : 'text-gray-600 dark:text-gray-400'}`}>
                         {isOverdue 
                           ? `Overdue by ${Math.abs(sub.diffDays)} days` 
                           : sub.diffDays === 0 
@@ -100,7 +100,7 @@ export function RemindersView({ subscriptions }: RemindersViewProps) {
                     </div>
                     
                     <div className="flex gap-2 w-full sm:w-auto">
-                      <Button variant="secondary" size="sm" className="flex-1 sm:flex-none" onClick={() => handleSnooze(sub.name)}>Snooze</Button>
+                      <Button variant="secondary" size="sm" className="flex-1 sm:flex-none dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700" onClick={() => handleSnooze(sub.name)}>Snooze</Button>
                       <Button size="sm" className="flex-1 sm:flex-none bg-green-600 hover:bg-green-700 text-white border-transparent shadow-sm shadow-green-200" onClick={() => handlePay(sub.name)}>
                         <CheckCircle className="w-4 h-4 mr-1" /> Paid
                       </Button>

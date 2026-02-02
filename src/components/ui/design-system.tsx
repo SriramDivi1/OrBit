@@ -66,18 +66,18 @@ export function Button({ className, variant = 'primary', size = 'md', ...props }
 export function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn('bg-white rounded-xl border border-gray-100 shadow-sm', className)}
+      className={cn('bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm transition-colors', className)}
       {...props}
     />
   );
 }
 
 export function CardHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn('p-6 pb-3', className)} {...props} />;
+  return <div className={cn('p-6 pb-3 border-gray-100 dark:border-gray-800', className)} {...props} />;
 }
 
 export function CardTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
-  return <h3 className={cn('text-lg font-semibold text-gray-900', className)} {...props} />;
+  return <h3 className={cn('text-lg font-semibold text-gray-900 dark:text-white', className)} {...props} />;
 }
 
 export function CardContent({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {

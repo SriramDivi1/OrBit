@@ -121,8 +121,8 @@ export function SubscriptionsView({ subscriptions, onEdit, onDelete, onAdd }: Su
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Subscriptions</h2>
-          <p className="text-gray-500 mt-1">Manage and organize all your subscriptions in one place.</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Subscriptions</h2>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">Manage and organize all your subscriptions in one place.</p>
         </div>
         <Button onClick={onAdd} className="shadow-lg shadow-purple-900/20 w-full sm:w-auto">
           <Plus className="w-4 h-4 mr-2" />
@@ -132,14 +132,14 @@ export function SubscriptionsView({ subscriptions, onEdit, onDelete, onAdd }: Su
 
       {/* Quick Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Card className="p-4">
+        <Card className="p-4 dark:bg-gray-900 dark:border-gray-800">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">
-              <CheckCircle className="w-5 h-5 text-green-600" />
+            <div className="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+              <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-gray-900">{stats.active}</p>
-              <p className="text-xs text-gray-500">Active</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.active}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">Active</p>
             </div>
           </div>
         </Card>
@@ -165,21 +165,21 @@ export function SubscriptionsView({ subscriptions, onEdit, onDelete, onAdd }: Su
             </div>
           </div>
         </Card>
-        <Card className="p-4">
+        <Card className="p-4 dark:bg-gray-900 dark:border-gray-800">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center">
-              <DollarSign className="w-5 h-5 text-purple-600" />
+            <div className="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+              <DollarSign className="w-5 h-5 text-purple-600 dark:text-purple-400" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-gray-900">${stats.totalMonthly.toFixed(0)}</p>
-              <p className="text-xs text-gray-500">Monthly</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">${stats.totalMonthly.toFixed(0)}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">Monthly</p>
             </div>
           </div>
         </Card>
       </div>
 
       {/* Search and Filters Bar */}
-      <Card className="p-4">
+      <Card className="p-4 dark:bg-gray-900 dark:border-gray-800">
         <div className="flex flex-col md:flex-row gap-4">
           {/* Search */}
           <div className="flex-1 relative">
@@ -189,7 +189,7 @@ export function SubscriptionsView({ subscriptions, onEdit, onDelete, onAdd }: Su
               placeholder="Search subscriptions..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FF971D] focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FF971D] focus:border-transparent bg-white dark:bg-gray-800 dark:text-white dark:placeholder-gray-500"
             />
           </div>
 
@@ -212,13 +212,13 @@ export function SubscriptionsView({ subscriptions, onEdit, onDelete, onAdd }: Su
             <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden">
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 transition-colors ${viewMode === 'list' ? 'bg-[#FF971D] text-white' : 'bg-white text-gray-500 hover:bg-gray-50'}`}
+                className={`p-2 transition-colors ${viewMode === 'list' ? 'bg-[#FF971D] text-white' : 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'}`}
               >
                 <List className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 transition-colors ${viewMode === 'grid' ? 'bg-[#FF971D] text-white' : 'bg-white text-gray-500 hover:bg-gray-50'}`}
+                className={`p-2 transition-colors ${viewMode === 'grid' ? 'bg-[#FF971D] text-white' : 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'}`}
               >
                 <Grid className="w-4 h-4" />
               </button>
@@ -321,9 +321,9 @@ export function SubscriptionsView({ subscriptions, onEdit, onDelete, onAdd }: Su
 
       {/* Results Count */}
       <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-500">
-          Showing <span className="font-medium text-gray-900">{filteredSubscriptions.length}</span> of{' '}
-          <span className="font-medium text-gray-900">{subscriptions.length}</span> subscriptions
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          Showing <span className="font-medium text-gray-900 dark:text-white">{filteredSubscriptions.length}</span> of{' '}
+          <span className="font-medium text-gray-900 dark:text-white">{subscriptions.length}</span> subscriptions
         </p>
         <div className="flex gap-2">
           <Button variant="ghost" size="sm" onClick={() => handleBulkAction('export')}>
@@ -334,12 +334,12 @@ export function SubscriptionsView({ subscriptions, onEdit, onDelete, onAdd }: Su
 
       {/* Subscriptions Display */}
       {filteredSubscriptions.length === 0 ? (
-        <Card className="p-12 text-center">
-          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <Card className="p-12 text-center dark:bg-gray-900 dark:border-gray-800">
+          <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
             <Search className="w-8 h-8 text-gray-400" />
           </div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">No subscriptions found</h3>
-          <p className="text-gray-500 mb-4">Try adjusting your search or filter criteria</p>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">No subscriptions found</h3>
+          <p className="text-gray-500 dark:text-gray-400 mb-4">Try adjusting your search or filter criteria</p>
           <Button variant="secondary" onClick={() => { setFilterStatus('all'); setFilterCategory('all'); setSearchQuery(''); }}>
             Clear Filters
           </Button>
@@ -353,10 +353,10 @@ export function SubscriptionsView({ subscriptions, onEdit, onDelete, onAdd }: Su
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.03 }}
             >
-              <Card className="p-4 hover:shadow-md transition-shadow h-full">
+              <Card className="p-4 hover:shadow-md transition-shadow h-full dark:bg-gray-900 dark:border-gray-800">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-lg bg-gray-50 flex items-center justify-center p-2 border border-gray-100">
+                    <div className="w-12 h-12 rounded-lg bg-gray-50 dark:bg-gray-800 flex items-center justify-center p-2 border border-gray-100 dark:border-gray-700">
                       <img
                         src={sub.logo}
                         alt={sub.name}
@@ -367,8 +367,8 @@ export function SubscriptionsView({ subscriptions, onEdit, onDelete, onAdd }: Su
                       />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">{sub.name}</h3>
-                      <p className="text-xs text-gray-500">{sub.category}</p>
+                      <h3 className="font-semibold text-gray-900 dark:text-white">{sub.name}</h3>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{sub.category}</p>
                     </div>
                   </div>
                   <Badge variant={sub.status}>{sub.statusLabel}</Badge>
@@ -376,10 +376,10 @@ export function SubscriptionsView({ subscriptions, onEdit, onDelete, onAdd }: Su
 
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-500 flex items-center gap-1">
+                    <span className="text-gray-500 dark:text-gray-400 flex items-center gap-1">
                       <DollarSign className="w-3 h-3" /> Amount
                     </span>
-                    <span className="font-semibold text-gray-900">{sub.amount}</span>
+                    <span className="font-semibold text-gray-900 dark:text-white">{sub.amount}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-500 flex items-center gap-1">
@@ -408,28 +408,28 @@ export function SubscriptionsView({ subscriptions, onEdit, onDelete, onAdd }: Su
           ))}
         </div>
       ) : (
-        <Card className="overflow-hidden">
+        <Card className="overflow-hidden dark:bg-gray-900 dark:border-gray-800">
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
-              <thead className="text-xs text-gray-500 uppercase bg-gray-50/80">
+              <thead className="text-xs text-gray-500 dark:text-gray-400 uppercase bg-gray-50/80 dark:bg-gray-800">
                 <tr>
                   <th className="px-6 py-4 font-medium">
-                    <button onClick={() => toggleSort('name')} className="flex items-center gap-1 hover:text-gray-900">
+                    <button onClick={() => toggleSort('name')} className="flex items-center gap-1 hover:text-gray-900 dark:hover:text-white">
                       Service {sortBy === 'name' && <ArrowUpDown className="w-3 h-3" />}
                     </button>
                   </th>
                   <th className="px-6 py-4 font-medium">
-                    <button onClick={() => toggleSort('category')} className="flex items-center gap-1 hover:text-gray-900">
+                    <button onClick={() => toggleSort('category')} className="flex items-center gap-1 hover:text-gray-900 dark:hover:text-white">
                       Category {sortBy === 'category' && <ArrowUpDown className="w-3 h-3" />}
                     </button>
                   </th>
                   <th className="px-6 py-4 font-medium">
-                    <button onClick={() => toggleSort('amount')} className="flex items-center gap-1 hover:text-gray-900">
+                    <button onClick={() => toggleSort('amount')} className="flex items-center gap-1 hover:text-gray-900 dark:hover:text-white">
                       Amount {sortBy === 'amount' && <ArrowUpDown className="w-3 h-3" />}
                     </button>
                   </th>
                   <th className="px-6 py-4 font-medium">
-                    <button onClick={() => toggleSort('nextPayment')} className="flex items-center gap-1 hover:text-gray-900">
+                    <button onClick={() => toggleSort('nextPayment')} className="flex items-center gap-1 hover:text-gray-900 dark:hover:text-white">
                       Next Payment {sortBy === 'nextPayment' && <ArrowUpDown className="w-3 h-3" />}
                     </button>
                   </th>
@@ -444,11 +444,11 @@ export function SubscriptionsView({ subscriptions, onEdit, onDelete, onAdd }: Su
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: index * 0.02 }}
-                    className="bg-white hover:bg-gray-50/80 transition-colors"
+                    className="bg-white dark:bg-gray-900 hover:bg-gray-50/80 dark:hover:bg-gray-800/80 transition-colors border-b border-gray-100 dark:border-gray-800 last:border-0"
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center p-2 border border-gray-100">
+                        <div className="w-10 h-10 rounded-lg bg-gray-50 dark:bg-gray-800 flex items-center justify-center p-2 border border-gray-100 dark:border-gray-700">
                           <img
                             src={sub.logo}
                             alt={sub.name}
@@ -459,14 +459,14 @@ export function SubscriptionsView({ subscriptions, onEdit, onDelete, onAdd }: Su
                           />
                         </div>
                         <div>
-                          <div className="font-semibold text-gray-900">{sub.name}</div>
-                          <div className="text-xs text-gray-500">{sub.cycle}</div>
+                          <div className="font-semibold text-gray-900 dark:text-white">{sub.name}</div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400">{sub.cycle}</div>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-gray-500">{sub.category}</td>
-                    <td className="px-6 py-4 font-semibold text-gray-900">{sub.amount}</td>
-                    <td className="px-6 py-4 text-gray-500">{sub.nextPayment}</td>
+                    <td className="px-6 py-4 text-gray-500 dark:text-gray-400">{sub.category}</td>
+                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">{sub.amount}</td>
+                    <td className="px-6 py-4 text-gray-500 dark:text-gray-400">{sub.nextPayment}</td>
                     <td className="px-6 py-4">
                       <Badge variant={sub.status}>{sub.statusLabel}</Badge>
                     </td>
